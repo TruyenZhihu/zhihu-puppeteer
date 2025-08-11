@@ -8,13 +8,14 @@
   },
   "dependencies": {
   "puppeteer": "^24.1.1"
-}
+},
   "scripts": {
   "start": "node index.js"
 }
 
 
   }
+
 
 
 
