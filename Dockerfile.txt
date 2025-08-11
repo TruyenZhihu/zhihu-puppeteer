@@ -1,0 +1,27 @@
+FROM node:18-slim
+
+# Cài Chromium và các gói phụ thuộc
+RUN apt-get update && apt-get install -y \
+    chromium \
+    chromium-driver \
+    fonts-ipafont-gothic \
+    fonts-wqy-zenhei \
+    fonts-thai-tlwg \
+    fonts-kacst \
+    fonts-freefont-ttf \
+    libxss1 \
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+# Tạo thư mục app
+WORKDIR /app
+
+# Copy file package.json và cài đặt
+COPY package*.json ./
+RUN npm install
+
+# Copy toàn bộ code
+COPY . .
+
+# Chạy app
+CMD ["npm", "start"]
